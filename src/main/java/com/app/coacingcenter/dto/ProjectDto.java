@@ -1,6 +1,7 @@
 package com.app.coacingcenter.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import com.app.coacingcenter.utils.FieldMapper;
 
@@ -32,6 +33,9 @@ public class ProjectDto {
 	
 	@FieldMapper(name = "projectDurationInMonths")
 	private Integer projectDurationInMonths;
+	
+	
+	private List<ProjectPaymentsDto> payments;
 
 	public Integer getProjectId() {
 		return projectId;
@@ -104,5 +108,15 @@ public class ProjectDto {
 	public void setProjectDurationInMonths(Integer projectDurationInMonths) {
 		this.projectDurationInMonths = projectDurationInMonths;
 	}
+
+	public List<ProjectPaymentsDto> getPayments() {
+		return payments;
+	}
+
+	public void setPayments(List<ProjectPaymentsDto> payments) {
+		this.payments = payments;
+	}
+	
+	
 	
 }

@@ -31,6 +31,7 @@ import com.app.coacingcenter.repository.StudentRepository;
 import com.app.coacingcenter.repository.UserRepository;
 import com.app.coacingcenter.service.StudentService;
 import com.app.coacingcenter.utils.CommonUtility;
+import com.app.coacingcenter.utils.DateTimeUtil;
 import com.app.coacingcenter.utils.FieldMapperService;
 import com.app.coacingcenter.utils.SuccessorStringGenerator;
 
@@ -283,7 +284,9 @@ public class StudentServiceImpl implements StudentService {
 			studentCourse.setIndentedDate(date);
 			studentCourse.setCertificateNumber(certificateNumber);
 			studentCourse.setIsIndentCompleted(true);
-			studentCourse.setBatchName(batchName);
+			String dateToBeAddedInBatchNAme = DateTimeUtil.dateToString(date, "dd-MM-yyyy");
+			studentCourse.setBatchName(batchName + " " + dateToBeAddedInBatchNAme);
+
 			indentedStudentCourse.add(studentCourse);
 
 		}

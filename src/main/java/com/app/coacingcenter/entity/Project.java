@@ -1,12 +1,16 @@
 package com.app.coacingcenter.entity;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.app.coacingcenter.utils.FieldMapper;
@@ -51,6 +55,9 @@ public class Project {
 	@Column
 	@FieldMapper(name = "projectDurationInMonths")
 	private Integer projectDurationInMonths;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "project")
+	private List<ProjectPayments> payments;
 
 	public Integer getProjectId() {
 		return projectId;
@@ -122,6 +129,14 @@ public class Project {
 
 	public void setProjectDurationInMonths(Integer projectDurationInMonths) {
 		this.projectDurationInMonths = projectDurationInMonths;
+	}
+
+	public List<ProjectPayments> getPayments() {
+		return payments;
+	}
+
+	public void setPayments(List<ProjectPayments> payments) {
+		this.payments = payments;
 	}
 	
 	
